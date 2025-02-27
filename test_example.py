@@ -18,7 +18,8 @@ def test_correctness(name, path):
         model=model,
         criteria="Determine if the 'actual output' is correct based on the 'expected output'.",
         evaluation_params=[LLMTestCaseParams.ACTUAL_OUTPUT, LLMTestCaseParams.EXPECTED_OUTPUT],
-        threshold=0.5
+        threshold=0.5,
+        verbose_mode=True
     )
     test_case = LLMTestCase(
         input="I have a persistent cough and fever. Should I be worried?",
