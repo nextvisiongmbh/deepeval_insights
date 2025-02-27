@@ -57,7 +57,7 @@ class EvaluationModel(DeepEvalBaseLLM):
 
         return pipeline(prompt)
 
-    async def a_generate(self, prompt: str) -> str:
+    async def a_generate(self, prompt: str, schema) -> str:
         return self.generate(prompt)
 
     def get_model_name(self):
