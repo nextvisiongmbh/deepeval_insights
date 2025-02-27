@@ -14,17 +14,17 @@ class EvaluationModel(DeepEvalBaseLLM):
         self.name = name
         self.path = path
         
-        quantization_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_compute_dtype=torch.float16,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_use_double_quant=True,
-        )
+        # quantization_config = BitsAndBytesConfig(
+        #     load_in_4bit=True,
+        #     bnb_4bit_compute_dtype=torch.float16,
+        #     bnb_4bit_quant_type="nf4",
+        #     bnb_4bit_use_double_quant=True,
+        # )
 
         model_4bit = AutoModelForCausalLM.from_pretrained(
-            path,
-            device_map="auto",
-            quantization_config=quantization_config,
+            path# ,
+            # device_map="auto",
+            # quantization_config=quantization_config,
         )
         tokenizer = AutoTokenizer.from_pretrained(
             path
@@ -32,6 +32,7 @@ class EvaluationModel(DeepEvalBaseLLM):
 
         self.model = model_4bit
         self.tokenizer = tokenizer
+        self.device = "cuda"
 
     def load_model(self):
         return self.model
@@ -43,6 +44,7 @@ class EvaluationModel(DeepEvalBaseLLM):
             "text-generation",
             model=model,
             tokenizer=self.tokenizer,
+            device=self.device,
             use_cache=True,
             device_map="auto",
             max_length=2500,
