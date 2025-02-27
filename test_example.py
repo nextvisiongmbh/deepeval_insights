@@ -26,7 +26,9 @@ def test_correctness(name, path):
         actual_output="A persistent cough and fever could be a viral infection or something more serious. See a doctor if symptoms worsen or don’t improve in a few days.",
         expected_output="A persistent cough and fever could indicate a range of illnesses, from a mild viral infection to more serious conditions like pneumonia or COVID-19. You should seek medical attention if your symptoms worsen, persist for more than a few days, or are accompanied by difficulty breathing, chest pain, or other concerning signs."
     )
-    assert_test(test_case, [correctness_metric])
+    print(test_case)
+    print(correctness_metric)
+    assert_test(test_case, correctness_metric)
     
 if __name__ == '__main__':
     name = args.name
