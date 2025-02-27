@@ -7,6 +7,7 @@ import argparse
 parser=argparse.ArgumentParser(description="sample argument parser")
 parser.add_argument("name")
 parser.add_argument("path")
+parser.add_argument("key")
 args=parser.parse_args()
 
 def test_correctness(name, path, key):
@@ -36,4 +37,5 @@ def test_correctness(name, path, key):
 if __name__ == '__main__':
     name = args.name
     path = args.path
-    test_correctness(name, path)
+    key = args.key
+    test_correctness(name, path, key)
