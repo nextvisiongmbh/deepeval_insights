@@ -3,6 +3,8 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import GEval
 from EvaluationModel import EvaluationModel
 import argparse
+import os
+
 
 parser=argparse.ArgumentParser(description="sample argument parser")
 parser.add_argument("name")
@@ -14,6 +16,7 @@ def test_correctness(name, path, key):
     
     if key:
         model = 'gpt-4o-mini'
+        os.environ["OPENAI_API_KEY"] = key
     else:
         model = EvaluationModel(name, path)
     
