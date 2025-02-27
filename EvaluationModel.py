@@ -46,7 +46,7 @@ class EvaluationModel(DeepEvalBaseLLM):
             tokenizer=self.tokenizer,
             device=self.device,
             use_cache=True,
-            device_map="auto",
+            # device_map="auto",
             # max_length=2500,
             do_sample=True,
             top_k=5,
