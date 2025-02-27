@@ -9,9 +9,12 @@ parser.add_argument("name")
 parser.add_argument("path")
 args=parser.parse_args()
 
-def test_correctness(name, path):
+def test_correctness(name, path, key):
     
-    model = EvaluationModel(name, path)
+    if key:
+        model = 'gpt-4o-mini'
+    else:
+        model = EvaluationModel(name, path)
     
     correctness_metric = GEval(
         name="Correctness",
